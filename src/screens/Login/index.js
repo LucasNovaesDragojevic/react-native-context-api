@@ -1,28 +1,28 @@
 import { useContext, useState } from 'react'
-import { Text, View, TextInput, TouchableOpacity, StatusBar } from 'react-native'
-import { ContextGlobal } from '../../contexts/global'
+import { StatusBar, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { ThemeContext } from '../../contexts/theme'
 import { styles } from './styles'
 
 export default function Login({ navigation }) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
-    const {value} = useContext(ContextGlobal)
+    const {themeChoosed} = useContext(ThemeContext)
+    const style = styles(themeChoosed)
 
     return (
-        <View style={styles.container}>
+        <View style={style.container}>
             <StatusBar />
-            <Text style={styles.title}>Login {value}</Text>
-            <View style={styles.inputArea}>
+            <Text style={style.title}>Login</Text>
+            <View style={style.inputArea}>
                 <TextInput
-                    style={styles.input}
+                    style={style.input}
                     placeholder='Email'
                     placeholderTextColor='#999'
                     autoCapitalize='none'
                     value={email}
                     onChangeText={setEmail} />
                 <TextInput
-                    style={styles.input}
+                    style={style.input}
                     placeholder='Password'
                     placeholderTextColor='#999'
                     autoCapitalize='none'
@@ -30,9 +30,9 @@ export default function Login({ navigation }) {
                     onChangeText={setPassword} />
             </View>
             <TouchableOpacity
-                style={styles.btn}
+                style={style.btn}
                 onPress={() => navigation.navigate('Principal')}>
-                <Text style={styles.btnTexto}>Login</Text>
+                <Text style={style.btnTexto}>Login</Text>
             </TouchableOpacity>
         </View>
     )

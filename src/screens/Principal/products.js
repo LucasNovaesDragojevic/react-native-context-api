@@ -1,8 +1,8 @@
-import imageShoe from '../../images/shoe.jpeg'
-import imageTable from '../../images/table.png'
-import imageShirt from '../../images/shirt.jpeg'
 import imageChair from '../../images/chair.jpeg'
+import imageShirt from '../../images/shirt.jpeg'
+import imageShoe from '../../images/shoe.jpeg'
 import imageSofa from '../../images/sofa.png'
+import imageTable from '../../images/table.png'
 
 export const products = [
     {

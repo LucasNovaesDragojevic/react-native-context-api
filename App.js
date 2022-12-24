@@ -1,8 +1,8 @@
 import Routes from './src/routes'
-import InfoProvider from './src/contexts/global'
+import ThemeProvider from './src/contexts/theme'
 
 export default function App() {
-    return <InfoProvider>
+    return <ThemeProvider>
         <Routes />
-    </InfoProvider>
+    </ThemeProvider>
 }
