@@ -1,13 +1,15 @@
+import { useContext, useState } from 'react'
 import { FlatList, StatusBar, Text, TouchableOpacity, View } from 'react-native'
 import { Feather } from 'react-native-vector-icons'
 import MaterialCommunityIcons from 'react-native-vector-icons/Feather'
 import Product from '../../components/Product'
+import { ContextGlobal } from '../../contexts/global'
 import { products } from './products'
 import { styles } from './styles'
 
 export default function Principal({ navigation }) {
     const lastSeens = []
-
+    const {value} = useContext(ContextGlobal)
     return (
         <View style={styles.container}>
             <StatusBar />
