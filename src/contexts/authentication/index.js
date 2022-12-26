@@ -19,7 +19,7 @@ export function AuthenticationProvider({children}) {
         }
     }
     
-    return <AuthenticationContext.Provider value={{user, login}}>
+    return <AuthenticationContext.Provider value={{login, user}}>
         {children}
     </AuthenticationContext.Provider>
 }
