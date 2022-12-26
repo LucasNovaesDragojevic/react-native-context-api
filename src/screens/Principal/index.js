@@ -6,16 +6,19 @@ import Product from '../../components/Product'
 import { products } from './products'
 import { styles } from './styles'
 import { ThemeContext } from '../../contexts/theme'
+import { AuthenticationContext } from '../../contexts/authentication'
 
 export default function Principal({ navigation }) {
     const lastSeens = []
     const {themeChoosed} = useContext(ThemeContext)
+    const {user} = useContext(AuthenticationContext)
     const style = styles(themeChoosed)
+
     return (
         <View style={style.container}>
             <StatusBar />
             <View style={style.titleArea}>
-                <Text style={style.title}>Hellow, NAME</Text>
+                <Text style={style.title}>Hellow, {user.name}</Text>
                 <View style={style.carArea}>
                     <TouchableOpacity onPress={() => { }}>
                         <Feather name="shopping-cart" size={30} color="#fff" style={style.carIcon} />
