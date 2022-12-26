@@ -4,7 +4,7 @@ import { ThemeContext } from '../../contexts/theme'
 import { styles } from './styles'
 
 export default function Configuration({ navigation }) {
-    const {actualTheme, setActualTheme, themeChoosed} = useContext(ThemeContext)
+    const {actualTheme, themeChoosed, saveThemeLocally} = useContext(ThemeContext)
     const style = styles(themeChoosed)
 
     return (
@@ -21,9 +21,9 @@ export default function Configuration({ navigation }) {
 
     function changeThemeValue() {
         if (actualTheme === 'dark')
-            setActualTheme('light')
+            saveThemeLocally('light')
         else
-            setActualTheme('dark')
+            saveThemeLocally('dark')
     }
     
     function getSwitchValue() {
