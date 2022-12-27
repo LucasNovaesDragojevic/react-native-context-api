@@ -11,10 +11,10 @@ import { ProductsContext } from '../../contexts/products'
 
 export default function Principal({navigation}) {
 
-    const {themeChoosed} = useContext(ThemeContext)
+    const {actualTheme} = useContext(ThemeContext)
     const {user} = useContext(AuthenticationContext)
     const {quantity, lastSeens} = useContext(ProductsContext)
-    const style = styles(themeChoosed)
+    const style = styles(actualTheme)
 
     return (
         <View style={style.container}>

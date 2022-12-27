@@ -3,7 +3,7 @@ import { Text, View, Image, TouchableOpacity } from 'react-native'
 import { ProductsContext } from '../../contexts/products'
 import { styles } from './styles'
 
-export default function Product({ item, add }) {
+export default function Product({item, add}) {
     const {seenProduct} = useContext(ProductsContext)
     return (
         <View style={styles.card}>

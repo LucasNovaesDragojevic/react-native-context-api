@@ -10,15 +10,13 @@ import Checkout from '../screens/Checkout'
 const Tab = createNativeStackNavigator()
 
 export default function Routes() {
-    return (
-        <NavigationContainer>
-            <Tab.Navigator>
-                <Tab.Screen name="Login" component={Login} options={{ headerShown: false }} />
-                <Tab.Screen name="Principal" component={Principal} options={{ headerShown: false }} />
-                <Tab.Screen name="Configurations" component={Configuration} options={{ headerTitleAlign: 'center' }} />
-                <Tab.Screen name="Summary" component={Summary} options={{ headerTitleAlign: 'center' }} />
-                <Tab.Screen name="Checkout" component={Checkout} options={{ headerTitleAlign: 'center' }} />
-            </Tab.Navigator>
-        </NavigationContainer>
-    )
+    return <NavigationContainer>
+        <Tab.Navigator>
+            <Tab.Screen name="Login" component={Login} options={{ headerShown: false }} />
+            <Tab.Screen name="Principal" component={Principal} options={{ headerShown: false }} />
+            <Tab.Screen name="Configurations" component={Configuration} options={{ headerTitleAlign: 'center' }} />
+            <Tab.Screen name="Summary" component={Summary} options={{ headerTitleAlign: 'center' }} />
+            <Tab.Screen name="Checkout" component={Checkout} options={{ headerTitleAlign: 'center' }} />
+        </Tab.Navigator>
+    </NavigationContainer>
 }

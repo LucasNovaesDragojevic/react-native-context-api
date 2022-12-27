@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 export const ThemeContext = createContext({})
 
 export default function ThemeProvider({children}) {
-    const [actualTheme, setActualTheme] = useState('dark')
+    const [theme, setTheme] = useState('dark')
 
     const themes = {
         'dark': dark,
@@ -13,21 +13,20 @@ export default function ThemeProvider({children}) {
     }
 
     useEffect(async () => {
-        const themeSaved = await AsyncStorage.getItem('theme')
-        if (themeSaved)
-            setActualTheme(themeSaved)
+        const themeActual = await AsyncStorage.getItem('theme')
+        if (themeActual)
+            setTheme(themeActual)
     }, [])
 
-    async function saveThemeLocally(theme) {
+    async function changeTheme(theme) {
         await AsyncStorage.setItem('theme', theme)
-        setActualTheme(theme)
+        setTheme(theme)
     }
 
     return <ThemeContext.Provider value={{
-        actualTheme,
-        setActualTheme,
-        themeChoosed: themes[actualTheme],
-        saveThemeLocally
+        theme,
+        actualTheme: themes[theme],
+        changeTheme
     }}>
         {children}
     </ThemeContext.Provider>

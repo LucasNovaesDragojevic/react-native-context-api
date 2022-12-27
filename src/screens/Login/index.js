@@ -7,12 +7,12 @@ import { styles } from './styles'
 export default function Login({ navigation }) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const {themeChoosed} = useContext(ThemeContext)
+    const {actualTheme} = useContext(ThemeContext)
     const {login} = useContext(AuthenticationContext)
-    const style = styles(themeChoosed)
+    const style = styles(actualTheme)
 
-    function loginOnSystem() {
-        const result = login(email, password)
+    async function loginOnSystem() {
+        const result = await login(email, password)
         if (result === 'ok') {
             navigation.navigate('Principal')
         } else {
@@ -44,7 +44,7 @@ export default function Login({ navigation }) {
             <TouchableOpacity
                 style={style.btn}
                 onPress={loginOnSystem}>
-                <Text style={style.btnTexto}>Login</Text>
+                <Text style={style.btnText}>Login</Text>
             </TouchableOpacity>
         </View>
     )

@@ -3,15 +3,15 @@ import { Switch, Text, View } from 'react-native'
 import { ThemeContext } from '../../contexts/theme'
 import { styles } from './styles'
 
-export default function Configuration({ navigation }) {
-    const {actualTheme, themeChoosed, saveThemeLocally} = useContext(ThemeContext)
-    const style = styles(themeChoosed)
+export default function Configuration({}) {
+    const {theme, actualTheme, changeTheme} = useContext(ThemeContext)
+    const style = styles(actualTheme)
 
     return (
         <View style={style.container}>
             <Text style={style.title}>Configuration</Text>
             <View style={style.inputArea}>
-                <Text style={style.subtitle}>Theme: {actualTheme}</Text>
+                <Text style={style.subtitle}>Theme: {theme}</Text>
                 <Switch
                     onValueChange={changeThemeValue}
                     value={getSwitchValue()} />
@@ -20,14 +20,14 @@ export default function Configuration({ navigation }) {
     )
 
     function changeThemeValue() {
-        if (actualTheme === 'dark')
-            saveThemeLocally('light')
+        if (theme === 'dark')
+            changeTheme('light')
         else
-            saveThemeLocally('dark')
+            changeTheme('dark')
     }
     
     function getSwitchValue() {
-        if (actualTheme === 'dark')
+        if (theme === 'dark')
             return true
         else 
             return false

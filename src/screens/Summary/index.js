@@ -10,10 +10,10 @@ import { ProductsContext } from '../../contexts/products'
 
 export default function Summary({navigation}) {
 
-    const {themeChoosed} = useContext(ThemeContext)
+    const {actualTheme} = useContext(ThemeContext)
     const {user} = useContext(AuthenticationContext)
     const {quantity, cart} = useContext(ProductsContext)
-    const style = styles(themeChoosed)
+    const style = styles(actualTheme)
 
     return (
         <View style={style.container}>
@@ -21,9 +21,7 @@ export default function Summary({navigation}) {
             <View style={style.titleArea}>
                 <Text style={style.title}>Hellow, {user.name}</Text>
                 <View style={style.carArea}>
-                    <TouchableOpacity onPress={() => { }}>
-                        <Feather name="shopping-cart" size={30} color="#fff" style={style.carIcon} />
-                    </TouchableOpacity>
+                    <Feather name="shopping-cart" size={30} color="#fff" style={style.carIcon} />
                     { quantity > 0 && <View style={style.canQuanityArea}>
                         <Text style={style.carQuantity}>{quantity}</Text>
                     </View>}
@@ -40,7 +38,7 @@ export default function Summary({navigation}) {
                 style={style.list}
                 showsVerticalScrollIndicator={false}/>
 
-            <TouchableOpacity style={style.btn} onPress={navigation.navigate('Checkout')}>
+            <TouchableOpacity style={style.btn} onPress={() => navigation.navigate('Checkout')}>
                 <Text style={style.btnText}>Buy</Text>
             </TouchableOpacity>
         </View>

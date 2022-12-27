@@ -3,9 +3,9 @@ import { createContext, useState } from "react";
 export const AuthenticationContext = createContext({})
 
 export function AuthenticationProvider({children}) {
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState(null)
 
-    function login(email, password) {
+    async function login(email, password) {
         if (email == 'user@email.com' && password == 123) {
             setUser({
                 name: 'User name',
@@ -19,7 +19,7 @@ export function AuthenticationProvider({children}) {
         }
     }
     
-    return <AuthenticationContext.Provider value={{login, user}}>
+    return <AuthenticationContext.Provider value={{user, login}}>
         {children}
     </AuthenticationContext.Provider>
 }
